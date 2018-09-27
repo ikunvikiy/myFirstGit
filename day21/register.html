@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<form action="http://127.0.0.1/nj1801/register.php" method="post">
+			手机号: <input type="text" name="uname" id="uname"/><br>
+			密码 :  <input type="text" name="upwd" id="upwd"/><br>
+			<input type="submit" value="注册"/>
+		</form>
+	</body>
+</html>
+<script type="text/javascript">
+	var oForm = document.querySelector("form");
+	var oTxtName = document.getElementById("uname");
+	var oTxtPwd = document.getElementById("upwd");
+	oForm.onsubmit = function(){
+		//如果让用户名和密码都符合要求   
+		//用户名的正则
+		var reg = /^1(3|5|7|8)\d{9}$/; //[3578]
+		var strName = oTxtName.value;
+		if( !reg.test( strName ) ){ //手机号不符合正则规范
+			alert("手机号不合法");
+			return false;
+		}
+		
+		//密码   至少6位字符  
+		var reg = /^.{6,}$/; //
+		var strPwd = oTxtPwd.value;
+		if( !reg.test( strPwd ) ){//密码不符合规范
+			alert("密码不符合规范");
+			return false;
+		}
+		
+		
+		return true;
+	}
+</script>
+
